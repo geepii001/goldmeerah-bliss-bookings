@@ -1,12 +1,62 @@
 
 import { ShimmerButton } from "@/components/ui/shimmer-button";
+import { NavBar } from "@/components/ui/tubelight-navbar";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Home, User, Briefcase, FileText } from "lucide-react";
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   
   const isHomePage = location.pathname === '/';
+
+  const navItems = [
+    { 
+      name: 'Home', 
+      url: '/', 
+      icon: Home,
+      onClick: () => navigate('/')
+    },
+    { 
+      name: 'Services', 
+      url: '#services', 
+      icon: Briefcase,
+      onClick: () => {
+        if (isHomePage) {
+          document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
+        } else {
+          navigate('/')
+          setTimeout(() => {
+            document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
+          }, 100)
+        }
+      }
+    },
+    { 
+      name: 'About', 
+      url: '#about', 
+      icon: User,
+      onClick: () => {
+        // Add scroll to about section if it exists
+        console.log('About clicked')
+      }
+    },
+    { 
+      name: 'Contact', 
+      url: '#contact', 
+      icon: FileText,
+      onClick: () => {
+        if (isHomePage) {
+          document.querySelector('[id*="contact"]')?.scrollIntoView({ behavior: 'smooth' })
+        } else {
+          navigate('/')
+          setTimeout(() => {
+            document.querySelector('[id*="contact"]')?.scrollIntoView({ behavior: 'smooth' })
+          }, 100)
+        }
+      }
+    }
+  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
@@ -25,25 +75,10 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
-          {isHomePage && (
-            <>
-              <button
-                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-                className="text-muted-foreground hover:text-primary transition-colors duration-300"
-              >
-                Services
-              </button>
-              <button
-                onClick={() => document.querySelector('[id*="contact"]')?.scrollIntoView({ behavior: 'smooth' })}
-                className="text-muted-foreground hover:text-primary transition-colors duration-300"
-              >
-                Contact
-              </button>
-            </>
-          )}
-        </nav>
+        {/* Navigation - Using TubeLight NavBar */}
+        <div className="hidden md:block">
+          <NavBar items={navItems} className="relative top-0 left-0 transform-none mb-0 pt-0" />
+        </div>
 
         {/* CTA Button */}
         <ShimmerButton

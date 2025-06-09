@@ -107,16 +107,6 @@ const Services = () => {
             </Card>
           ))}
         </div>
-
-        <div className="text-center mt-16">
-          <p className="text-lg text-muted-foreground mb-4">
-            Ready to experience luxury?
-          </p>
-          <div className="inline-flex items-center space-x-2 text-primary font-semibold">
-            <span>Book your appointment today</span>
-            <span className="animate-pulse">✨</span>
-          </div>
-        </div>
       </div>
     </section>
   );
