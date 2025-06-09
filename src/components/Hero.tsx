@@ -1,75 +1,114 @@
 
 import { Button } from "@/components/ui/button";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
+import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   const navigate = useNavigate();
 
+  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Handle search functionality or navigate to services
+    navigate('/booking');
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Handle search input change
+    console.log("Search input:", e.target.value);
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 spa-gradient opacity-90" />
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"
+        }}
+      />
       
-      {/* Decorative elements */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-gold-300/20 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-20 right-10 w-48 h-48 bg-rose-300/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/60 to-foreground/80" />
       
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        {/* Logo placeholder */}
-        <div className="mb-8 animate-fade-in">
-          <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full flex items-center justify-center shadow-2xl">
-            <span className="text-3xl font-bold text-white">GM</span>
-          </div>
-        </div>
+      <div className="relative z-10 text-center text-background px-6 max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-gold-200 via-cream-200 to-rose-200 bg-clip-text text-transparent">
+            Gold-Meerah Spa
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 text-gold-100 font-light">
+            Where Luxury Meets Wellness
+          </p>
+          <p className="text-lg mb-12 text-cream-100/90 max-w-2xl mx-auto leading-relaxed">
+            Experience the ultimate in relaxation and rejuvenation with our premium spa services. 
+            Indulge in treatments designed to restore your inner glow and outer radiance.
+          </p>
+        </motion.div>
 
-        {/* Main heading */}
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          <span className="text-gradient">Gold-Meerah</span>
-          <br />
-          <span className="text-foreground">Spa & Salon Services</span>
-        </h1>
-
-        {/* Tagline */}
-        <p className="text-xl md:text-2xl text-muted-foreground mb-8 font-light leading-relaxed animate-fade-in" style={{ animationDelay: '0.4s' }}>
-          Experience luxury and rejuvenation at its finest
-          <br />
-          <span className="text-primary font-medium">Where beauty meets wellness</span>
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in" style={{ animationDelay: '0.6s' }}>
-          <Button
-            size="lg"
-            className="px-8 py-4 text-lg font-semibold bg-gradient-to-r from-primary to-gold-500 hover:from-gold-500 hover:to-primary transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="mb-12"
+        >
+          <ShimmerButton
             onClick={() => navigate('/booking')}
+            className="text-lg font-semibold shadow-2xl"
+            shimmerColor="#f59e0b"
+            background="linear-gradient(135deg, #d4af37, #f4e4bc)"
           >
             Book Your Appointment
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="px-8 py-4 text-lg font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-            onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            View Services
-          </Button>
-        </div>
+          </ShimmerButton>
+        </motion.div>
 
-        {/* Stats */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in" style={{ animationDelay: '0.8s' }}>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-primary mb-2">25+</div>
-            <div className="text-muted-foreground">Premium Services</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-primary mb-2">1000+</div>
-            <div className="text-muted-foreground">Happy Clients</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-primary mb-2">5⭐</div>
-            <div className="text-muted-foreground">Customer Rating</div>
-          </div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.6 }}
+          className="max-w-lg mx-auto"
+        >
+          <PlaceholdersAndVanishInput
+            placeholders={[
+              "Search for facial treatments...",
+              "Find massage services...",
+              "Explore nail care options...",
+              "Discover hair treatments...",
+              "Browse spa packages..."
+            ]}
+            onChange={handleSearchChange}
+            onSubmit={handleSearchSubmit}
+          />
+        </motion.div>
+      </div>
+
+      {/* Floating particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-gold-300/30 rounded-full"
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: [0, 1, 0],
+              x: [0, Math.random() * 100 - 50],
+              y: [0, Math.random() * 100 - 50],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              delay: i * 1.5,
+            }}
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+          />
+        ))}
       </div>
     </section>
   );

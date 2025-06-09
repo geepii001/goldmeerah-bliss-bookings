@@ -1,5 +1,5 @@
 
-import { Button } from "@/components/ui/button";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Header = () => {
@@ -46,12 +46,14 @@ const Header = () => {
         </nav>
 
         {/* CTA Button */}
-        <Button
-          onClick={() => navigate('/booking')}
-          className="bg-gradient-to-r from-primary to-gold-500 hover:from-gold-500 hover:to-primary transition-all duration-300 font-semibold"
+        <ShimmerButton
+          onClick={() => navigate(location.pathname === '/booking' ? '/' : '/booking')}
+          className="px-6 py-2 text-sm font-semibold"
+          shimmerColor="#f59e0b"
+          background="linear-gradient(135deg, #d4af37, #f4e4bc)"
         >
           {location.pathname === '/booking' ? 'Home' : 'Book Now'}
-        </Button>
+        </ShimmerButton>
       </div>
     </header>
   );
