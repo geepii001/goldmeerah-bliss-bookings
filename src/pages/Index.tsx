@@ -5,19 +5,19 @@ import Services from "@/components/Services";
 import { AnimatedTestimonialsDemo } from "@/components/AnimatedTestimonialsDemo";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Gallery from "@/components/Gallery";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <main>
       <Header />
-      <main>
-        <Hero />
-        <Services />
-        <AnimatedTestimonialsDemo />
-        <Contact />
-      </main>
+      <Hero />
+      <Services />
+      <AnimatedTestimonialsDemo />
+      <Gallery />
+      <Contact />
       <Footer />
-    </div>
+    </main>
   );
 };
 

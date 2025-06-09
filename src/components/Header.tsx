@@ -59,15 +59,22 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
+    <header className="fixed top-0 left-0 right-0 z-[10000] bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <div 
           className="flex items-center space-x-3 cursor-pointer"
           onClick={() => navigate('/')}
         >
-          <div className="w-10 h-10 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full flex items-center justify-center">
-            <span className="text-lg font-bold text-white">GM</span>
+          <div className="w-12 h-12 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" className="w-full h-full">
+              <rect width="500" height="100" rx="50" fill="#698B69" />
+              <text x="50%" y="65%" dominantBaseline="middle" textAnchor="middle" fill="white" className="text-lg font-serif">gold-meerah spa and salon</text>
+              <g transform="translate(225, 120)">
+                <path d="M25 0 L50 40 L0 40 Z" fill="#698B69" />
+                <path d="M20 30 Q25 35 30 30" fill="none" stroke="white" strokeWidth="2" />
+              </g>
+            </svg>
           </div>
           <div className="hidden sm:block">
             <h1 className="font-bold text-lg text-foreground">Gold-Meerah</h1>
