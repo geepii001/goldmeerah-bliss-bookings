@@ -1,4 +1,4 @@
-import Card from "@/components/ui/carousel-card";
+import CustomCard from "./ui/carousel-card";
 
 const GALLERY_DATA = [
   {
@@ -43,7 +43,7 @@ const Gallery = () => {
         <p className="text-xl text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
           Experience the luxury and professional care at Gold-Meerah Spa and Salon through our gallery
         </p>
-        <Card data={GALLERY_DATA} cardsPerView={3} />
+        <CustomCard data={GALLERY_DATA} cardsPerView={3} />
       </div>
     </section>
   );
